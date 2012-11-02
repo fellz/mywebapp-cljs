@@ -7,8 +7,8 @@
 
 (defn connect-to-db [args]
  (if (= (first args) "dev")
-      (monger.core/connect-via-uri! "mongodb://fell:cnjkbr@alex.mongohq.com:10004/mywebapp-devdb")
-      (monger.core/connect-via-uri! "mongodb://<user>:<password>@alex.mongohq.com:10003/mywebapp-db"))
+      (monger.core/connect-via-uri! "mongodb://user:password@alex.mongohq.com:10004/mywebapp-devdb")
+      (monger.core/connect-via-uri! "mongodb://user:password@alex.mongohq.com:10003/mywebapp-db"))
   )
 
 (defn -main [& args]
