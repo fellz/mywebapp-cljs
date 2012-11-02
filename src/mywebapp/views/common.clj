@@ -5,8 +5,11 @@
 (defpartial layout [& content]
             (html5
               [:head
-               [:title "mywebapp"]
-               (include-css "/css/reset.css")]
+               [:title "Bookshelf"]
+               (include-css "/css/reset.css")
+               (include-css "/css/bootstrap.css")]
               [:body
-               [:div#wrapper
+
+               [:div.container
+                [:h1 "Bookshelf"]
                 content]]))
