@@ -5,7 +5,7 @@
 
 (def app-port (Integer. (get (System/getenv) "PORT" "8080")))
 
-; Edit these uri links to make db connection with your own user and password !
+; Edit these uri links with your user and password !
 (defn connect-to-db [args]
  (if (= (first args) "dev")
       (monger.core/connect-via-uri! "mongodb://user:password@alex.mongohq.com:10004/mywebapp-devdb")
