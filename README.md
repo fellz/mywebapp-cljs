@@ -1,10 +1,10 @@
 # mywebapp
 
-A website written in noir. 
+Clojure and ClojureScript web application. Using Noir, Monger, MongoDB. 
 
 ## Usage
 
-If you use cake, substitute 'lein' with 'cake' below. Everything should work fine.
+Install Leiningen 2 or if installed:
 
 ```bash
 lein deps
@@ -13,7 +13,7 @@ lein run
 
 ## License
 
-Copyright (C) 2011 FIXME
+Copyright (C) 2011 Trinix development
 
 Distributed under the Eclipse Public License, the same as Clojure.
 
