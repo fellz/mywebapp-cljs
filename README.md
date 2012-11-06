@@ -1,6 +1,6 @@
 # mywebapp
 
-Clojure and ClojureScript web application. Using Noir, Monger, MongoHQ, MongoDB. 
+Clojure and ClojureScript web application. Using Noir, Monger, MongoHQ, MongoDB  and ClojureScript in this version. 
 
 ## Usage
 
@@ -14,7 +14,7 @@ Edit your mongo uri to make app work.
 
 ## License
 
-Copyright (C) 2011 Trinix development
+Copyright (C) 2012 Trinix development
 
 Distributed under the Eclipse Public License, the same as Clojure.
 

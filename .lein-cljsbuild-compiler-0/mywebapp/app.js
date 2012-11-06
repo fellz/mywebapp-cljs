@@ -5,9 +5,9 @@ goog.require('fetch.remotes');
 goog.require('jayq.core');
 mywebapp.app.store_book = (function store_book(e){
 jayq.core.prevent.call(null,e);
-var author__73466 = jayq.core.val.call(null,jayq.core.$.call(null,"\uFDD0'#author"));
-var title__73467 = jayq.core.val.call(null,jayq.core.$.call(null,"\uFDD0'#title"));
-return fetch.remotes.remote_callback.call(null,"store-book",cljs.core.PersistentVector.fromArray([author__73466,title__73467], true),(function (result){
+var author__82187 = jayq.core.val.call(null,jayq.core.$.call(null,"\uFDD0'#author"));
+var title__82188 = jayq.core.val.call(null,jayq.core.$.call(null,"\uFDD0'#title"));
+return fetch.remotes.remote_callback.call(null,"store-book",cljs.core.PersistentVector.fromArray([author__82187,title__82188], true),(function (result){
 return fetch.remotes.remote_callback.call(null,"books-list-rem",cljs.core.PersistentVector.EMPTY,(function (result){
 jayq.core.inner.call(null,jayq.core.$.call(null,"\uFDD0'#books-list"),result);
 jayq.core.val.call(null,jayq.core.$.call(null,"\uFDD0'#author"),"");
