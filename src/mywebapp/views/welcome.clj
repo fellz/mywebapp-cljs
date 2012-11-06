@@ -1,19 +1,18 @@
 (ns mywebapp.views.welcome
   (:use [noir.core :only [defpage defpartial]]
-        [hiccup.form])  
+        [hiccup.form]
+        [noir.fetch.remotes])  
   (:require [mywebapp.views.common :as common]
-            [monger.collection :as monger]
-            [noir.response :as response])
+            [monger.collection :as monger])
 
   (:import (org.bson.types ObjectId))
 )  
 
 ;Form to send title and author
 (defpartial add-book-form []
-     (form-to [:post "/book/new"]
-          [:p (text-field {:placeholder "title"} "title")]
-          [:p (text-field {:placeholder "author"} "author")]
-          [:p (submit-button "Submit")]))
+          [:p (text-field {:placeholder "title" :id "title"} "title")]
+          [:p (text-field {:placeholder "author" :id "author"} "author")]
+          [:p (submit-button {:id "add-book-btn"} "Submit")])
   
 ;[Templae] Book box with title and author  
 (defpartial book-box [{:keys [title author]}]
@@ -32,15 +31,21 @@
 ;Main page 
 (defpage "/" []
          (common/layout
-           (books-list)
+           [:div#books-list
+             (books-list)]
+           [:hr]
+           [:h2 "Add book"]  
            (add-book-form)))
 
-; Send our data to dev db and redirect to main page
-(defpage [:post "/book/new" ] {:keys [title author]}
-  (monger/insert "books" 
-    {:_id (ObjectId.)
-    :title title
-    :author author 
-    })
-  (response/redirect "/")
-)
+;Save our data in db
+(defremote store-book [author title]
+  (if (monger/insert "books" 
+      {:_id (ObjectId.)
+      :title title
+      :author author 
+      })
+    "ok")
+  )
+(defremote books-list-rem []
+  (books-list)
+  )
