@@ -1,4 +1,4 @@
-# mywebapp
+# Bookshelf
 
 Clojure and ClojureScript web application. Using Noir, Monger, MongoHQ, MongoDB  and ClojureScript in this version. 
 
