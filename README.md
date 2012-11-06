@@ -8,7 +8,7 @@ Install Leiningen 2 or if installed:
 
 ```bash
 lein deps
-lein run
+lein run dev
 ```
 Edit your mongo uri to make app work.
 
