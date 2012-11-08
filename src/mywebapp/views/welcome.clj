@@ -14,7 +14,7 @@
           [:p (text-field {:placeholder "author" :id "author"} "author")]
           [:p (submit-button {:id "add-book-btn"} "Submit")])
   
-;[Templae] Book box with title and author  
+;[Template] Book box with title and author  
 (defpartial book-box [{:keys [title author]}]
   [:ul
     [:li 
@@ -28,6 +28,10 @@
   (map book-box (monger/find-maps "books" {} ))
   )
 
+(defpartial last-book [id]
+  (book-box (monger/find-one-as-map "books" {:_id id}))
+  )
+
 ;Main page 
 (defpage "/" []
          (common/layout
@@ -39,13 +43,11 @@
 
 ;Save our data in db
 (defremote store-book [author title]
-  (if (monger/insert "books" 
-      {:_id (ObjectId.)
+  (let [id (ObjectId.)]
+    (if (monger/insert "books" 
+      {:_id id
       :title title
       :author author 
       })
-    "ok")
-  )
-(defremote books-list-rem []
-  (books-list)
-  )
+      (last-book id)) ; Response
+  ))

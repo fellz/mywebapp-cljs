@@ -1,5 +1,5 @@
 (ns mywebapp.app
-  (:use [jayq.core :only [$ on inner val attr show hide prevent toggle]])
+  (:use [jayq.core :only [$ on prepend inner val attr show hide prevent toggle]])
   (:use-macros [fetch.macros :only [remote]])
   (:require 
     [fetch.remotes :as remotes])
@@ -14,12 +14,12 @@
         title (val ($ :#title))
     ]
   (remote (store-book author title) [result]
-    (remote (books-list-rem)[result]
-      (inner ($ :#books-list) result)
+      (prepend ($ :#books-list) result)) ; Prepend last book
       (val ($ :#author) "")
       (val ($ :#title) "")
-      )))
-)
+      )
+  )
+
 
 
 ; Here e is event object

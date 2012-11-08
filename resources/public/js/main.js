@@ -16809,13 +16809,11 @@ var mywebapp = {app:{}};
 mywebapp.app.store_book = function(a) {
   jayq.core.prevent.call(null, a);
   var a = jayq.core.val.call(null, jayq.core.$.call(null, "\ufdd0'#author")), b = jayq.core.val.call(null, jayq.core.$.call(null, "\ufdd0'#title"));
-  return fetch.remotes.remote_callback.call(null, "store-book", cljs.core.PersistentVector.fromArray([a, b], !0), function() {
-    return fetch.remotes.remote_callback.call(null, "books-list-rem", cljs.core.PersistentVector.EMPTY, function(a) {
-      jayq.core.inner.call(null, jayq.core.$.call(null, "\ufdd0'#books-list"), a);
-      jayq.core.val.call(null, jayq.core.$.call(null, "\ufdd0'#author"), "");
-      return jayq.core.val.call(null, jayq.core.$.call(null, "\ufdd0'#title"), "")
-    })
-  })
+  fetch.remotes.remote_callback.call(null, "store-book", cljs.core.PersistentVector.fromArray([a, b], !0), function(a) {
+    return jayq.core.prepend.call(null, jayq.core.$.call(null, "\ufdd0'#books-list"), a)
+  });
+  jayq.core.val.call(null, jayq.core.$.call(null, "\ufdd0'#author"), "");
+  return jayq.core.val.call(null, jayq.core.$.call(null, "\ufdd0'#title"), "")
 };
 jayq.core.on.call(null, jayq.core.$.call(null, "\ufdd0'body"), "\ufdd0'click", "\ufdd0'#add-book-btn", function(a) {
   return mywebapp.app.store_book.call(null, a)
